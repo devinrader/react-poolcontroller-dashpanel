@@ -1,33 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer tailwind-base, primereact, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html, body {
+  height: 98%;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.ag-theme-quartz,
+.ag-theme-quartz-dark {
+  --ag-grid-size: 3px;
+  --ag-list-item-height: 27px;
+  --ag-font-size: 11px;
+  --ag-selected-row-background-color: rgb(0, 255, 0, 0.1);
+}
+
+div.indicator {
+  display: inline-block;
+  border: solid 1px silver;
+  background: white;
+  vertical-align: text-top;
+  border-radius: 25%;
+  background-color: #007bff;
+  border-color: #007bff;
+  width: 1em;
+  height: 1em;
+}
+
+div.indicator[data-status=on],
+div.indicator[data-status=ready],
+div.indicator[data-status=selected],
+div.indicator[data-status=true] {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.icon[data-message-change=new] {
+  color: mediumvioletred;
+}
+
+.icon[data-message-change=update] {
+  color: #6495ed;
 }
